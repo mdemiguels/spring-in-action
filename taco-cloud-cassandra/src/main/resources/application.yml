@@ -4,4 +4,5 @@ spring:
       keyspace-name: tacocloud
       schema-action: recreate
       local-datacenter: datacenter1
-      contact-points: my-cassandra:9042
+      contact-points: cassandra
+      port: 9042

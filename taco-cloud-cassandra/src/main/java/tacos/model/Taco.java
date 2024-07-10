@@ -17,7 +17,7 @@ import org.springframework.data.cassandra.core.mapping.Table;
 import tacos.utils.TacoUDRUtils;
 
 @Data
-@Table("tacos")
+@Table("taco")
 public class Taco {
 
 	@PrimaryKeyColumn(type = PrimaryKeyType.PARTITIONED)
@@ -27,6 +27,7 @@ public class Taco {
 	@Size(min = 5, message = "Name must be at least 5 characters long")
 	private String name;
 
+	@Column("created_at")
 	@PrimaryKeyColumn(type = PrimaryKeyType.CLUSTERED,
 					  ordering = Ordering.DESCENDING)
 	private Date createdAt = new Date();

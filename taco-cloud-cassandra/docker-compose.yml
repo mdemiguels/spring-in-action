@@ -1,0 +1,31 @@
+version: '3.7'
+
+services:
+  cassandra:
+    image: cassandra:latest
+    container_name: cassandra
+    ports:
+      - "9042:9042"
+    networks:
+      - cassandra-net
+    volumes:
+      - cassandra-data:/var/lib/cassandra
+
+  springapp:
+    image: taco-cloud
+    container_name: springapp
+    ports:
+      - "8080:8080"
+    networks:
+      - cassandra-net
+    depends_on:
+      - cassandra
+
+networks:
+  cassandra-net:
+    driver: bridge
+    external: true
+
+volumes:
+  cassandra-data:
+    external: true

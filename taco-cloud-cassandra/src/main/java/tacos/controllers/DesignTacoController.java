@@ -63,10 +63,11 @@ public class DesignTacoController {
 							  @ModelAttribute TacoOrder tacoOrder) {
 
 		if(errors.hasErrors()) {
+			log.error("Errors: {}", errors.getAllErrors());
 			return "design";
 		}
 
-		tacoOrder.addTaco(TacoUDRUtils.toTacoUDT(taco));
+		tacoOrder.addTaco(taco);
 		log.info("Processing taco: {}", taco);
 
 		return "redirect:/orders/current";

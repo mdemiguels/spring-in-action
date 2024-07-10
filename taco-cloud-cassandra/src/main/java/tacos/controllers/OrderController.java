@@ -34,6 +34,7 @@ public class OrderController {
                                SessionStatus sessionStatus) {
 
         if(errors.hasErrors()) {
+            log.error("Errors: {}", errors.getAllErrors());
             return "orderForm";
         }
 

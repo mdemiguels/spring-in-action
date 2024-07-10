@@ -2,7 +2,7 @@
 FROM eclipse-temurin:21-jre
 
 # Copiar el archivo JAR de tu aplicación al contenedor
-COPY target/taco-cloud-0.0.1-SNAPSHOT.jar app.jar
+COPY target/taco-cloud*.jar app.jar
 
 # Exponer el puerto en el que tu aplicación se ejecutará
 EXPOSE 8080
