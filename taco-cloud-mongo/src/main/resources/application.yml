@@ -1,0 +1,4 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://root:Passw0rd@localhost:27017/tacocloud?authSource=admin
