@@ -1,3 +1,4 @@
+-- Crear tabla Taco_Order
 create table if not exists Taco_Order (
     id identity primary key,
     delivery_Name varchar(50) not null,
@@ -11,27 +12,27 @@ create table if not exists Taco_Order (
     placed_at timestamp not null
 );
 
+-- Crear tabla Taco
 create table if not exists Taco (
     id identity primary key,
     name varchar(50) not null,
+    createdAt timestamp not null,
     taco_order bigint not null,
-    taco_order_key bigint not null,
-    createdAt timestamp not null
+    foreign key (taco_order) references Taco_Order(id)
 );
 
-create table if not exists Ingredient_Ref (
-    ingredient varchar(4) not null,
-    taco bigint not null,
-    taco_key bigint not null
-);
-
+-- Crear tabla Ingredient
 create table if not exists Ingredient (
     id varchar(4) not null primary key,
     name varchar(25) not null,
     type varchar(10) not null
 );
 
-alter table Taco 
-    add foreign key (taco_order) references Taco_Order(id);
-alter table Ingredient_Ref 
-    add foreign key (ingredient) references Ingredient(id);
+-- Crear tabla intermedia para la relación muchos a muchos entre Taco y Ingredient
+create table if not exists Taco_Ingredients (
+    taco_id bigint not null,
+    ingredient_id varchar(4) not null,
+    foreign key (taco_id) references Taco(id),
+    foreign key (ingredient_id) references Ingredient(id),
+    primary key (taco_id, ingredient_id)
+);

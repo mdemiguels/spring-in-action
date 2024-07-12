@@ -1,6 +1,8 @@
 package tacos.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -16,6 +18,7 @@ public class Ingredient {
 	@Id
 	private final String id;
 	private final String name;
+	@Enumerated(EnumType.STRING)
 	private final Type type;
 
 
