@@ -8,9 +8,7 @@ import tacos.model.User;
 @Data
 public class RegistrationForm {
 
-    @NotBlank(message = "Username is required")
     private String username;
-    @NotBlank(message = "Password is required")
     private String password;
     private String fullname;
     private String street;
