@@ -60,6 +60,9 @@ public class SecurityConfig {
                 .logout(logout -> logout
                         .logoutSuccessUrl("/")
                 )
+                .csrf(csrf -> csrf
+                        .ignoringRequestMatchers("/h2-console/**")
+                )
                 .cors(Customizer.withDefaults())
                 .headers(headers -> headers
                         .frameOptions(Customizer.withDefaults())
