@@ -65,7 +65,6 @@ public class SecurityConfig {
                         .frameOptions(Customizer.withDefaults())
                         .disable()
                 )
-                .csrf(csrf -> csrf.disable())
                 .build();
     }
 

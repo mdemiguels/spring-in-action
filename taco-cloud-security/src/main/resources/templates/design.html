@@ -58,6 +58,9 @@
                 </div>
             </div>
         </div>
+
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+
         <h2>Name your taco creation:</h2>
         <div class="taco-name">
             <input type="text" th:field="*{name}" />
