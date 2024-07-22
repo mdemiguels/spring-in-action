@@ -15,6 +15,9 @@
     <div class="header">
         <img th:src="@{/images/TacoCloud.png}" />
         <h1>Design your taco!</h1>
+        <form method="POST" th:action="@{/logout}">
+            <input type="submit" value="Logout"/>
+        </form>
     </div>
 
     <form method="POST" th:object="${taco}">
