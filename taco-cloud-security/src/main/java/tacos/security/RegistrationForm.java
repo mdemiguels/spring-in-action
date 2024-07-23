@@ -1,6 +1,5 @@
 package tacos.security;
 
-import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import tacos.model.User;
@@ -18,9 +17,11 @@ public class RegistrationForm {
     private String phone;
 
     public User toUser(PasswordEncoder passwordEncoder) {
-        return new User(
+        User user = new User(
                 username, passwordEncoder.encode(password),
                 fullname, street, city, state, zip, phone);
+
+        return user;
     }
 
 }

@@ -44,6 +44,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers("/design").hasRole("USER")
                         .requestMatchers("/orders").hasRole("USER")
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/", "/**").permitAll()
                 )
                 .formLogin(form -> form
@@ -69,6 +70,14 @@ public class SecurityConfig {
                         .disable()
                 )
                 .build();
+    }
+
+    @Bean
+    public User adminUser(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        User admin = new User("admin", passwordEncoder.encode("admin"), "admin", "admin", "admin", "admin", "admin", "admin");
+        admin.setAdmin(true);
+        userRepository.save(admin);
+        return admin;
     }
 
 }

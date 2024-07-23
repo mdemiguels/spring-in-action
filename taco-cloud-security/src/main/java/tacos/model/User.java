@@ -1,10 +1,6 @@
 package tacos.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity(name = "users")
 @Data
@@ -36,10 +32,16 @@ public class User implements UserDetails {
     private final String state;
     private final String zip;
     private final String phone;
+    private boolean admin;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.asList((GrantedAuthority) () -> "ROLE_USER");
+
+        if (admin) {
+            return Arrays.asList(() -> "ROLE_USER", () -> "ROLE_ADMIN");
+        }
+        return Arrays.asList(() -> "ROLE_USER");
+
     }
 
     @Override
@@ -61,4 +63,5 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }

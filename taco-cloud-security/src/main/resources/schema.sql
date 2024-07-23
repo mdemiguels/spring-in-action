@@ -9,7 +9,10 @@ create table if not exists Taco_Order (
     cc_number varchar(16) not null,
     cc_expiration varchar(5) not null,
     cc_cvv varchar(3) not null,
-    placed_at timestamp not null
+    placed_at timestamp not null,
+    user_id bigint not null,
+
+    foreign key (user_id) references Users(id)
 );
 
 -- Crear tabla Taco
@@ -18,6 +21,7 @@ create table if not exists Taco (
     name varchar(50) not null,
     createdAt timestamp not null,
     taco_order bigint not null,
+
     foreign key (taco_order) references Taco_Order(id)
 );
 
