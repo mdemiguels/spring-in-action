@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Taco Cloud</title>
+</head>
+
+<body>
+	<nav>
+		<img th:src="@{/images/TacoCloud.png}" id="logoTaco" />
+		<ul class="nav-links">
+			<li><a th:href="@{/home}">Home</a></li>
+			<li><a th:href="@{/design}">Design a Taco</a></li>
+			<li><a th:href="@{/orders/current}">View Your Order</a></li>
+		</ul>
+	</nav>
+
+	<main>
+		<h1>Welcome to Taco Cloud</h1>
+		<p>
+			Taco Cloud is the premier online destination for ordering tacos. We offer a wide variety of tacos to suit
+			every taste.
+		</p>
+		<p>
+			<a th:href="@{/design}">Order a taco</a>
+		</p>
+	</main>
+
+	<section>
+		<h2>Some of our creations</h2>
+		<div class="taco-grid">
+			<div class="taco">
+				<img th:src="@{/images/taco1.jpg}" />
+				<h3>Beef Taco</h3>
+				<p>
+					Our classic beef taco is made with seasoned ground beef, shredded lettuce, and cheddar cheese.
+				</p>
+			</div>
+			<div class="taco">
+				<img th:src="@{/images/taco2.jpg}" />
+				<h3>Chicken Taco</h3>
+				<p>
+					Our chicken taco is made with grilled chicken, salsa, and guacamole.
+				</p>
+			</div>
+			<div class="taco">
+				<img th:src="@{/images/taco3.jpg}" />
+				<h3>Vegetarian Taco</h3>
+				<p>
+					Our vegetarian taco is made with black beans, rice, and guacamole.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<footer>
+		<p>&copy; 2021 Taco Cloud</p>
+		<a th:href="@{/home}">Home</a>
+		<a th:href="@{/design}">Design a Taco</a>
+		<a th:href="@{/orders/current}">View Your Order</a>
+	</footer>
+
+</body>
+
+</html>
